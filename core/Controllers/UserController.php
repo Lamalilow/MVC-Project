@@ -20,5 +20,6 @@ class UserController extends BaseController
 
         $findUser = $user->create($_POST);
         return var_dump($findUser);
+        //return view('index');
     }
 }
