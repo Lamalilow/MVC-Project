@@ -33,6 +33,13 @@ class UserController extends BaseController
         # Шифруем пароль в SHA1
         $_POST['password'] = sha1($_POST['password']);
         $user = new User();
+
+        #проверка, что логин уникальный
+        if($user -> isNotUniqueColumn('login', $_POST['login'])){
+            $errors['login'][]='Логин не является уникальным';
+            return view('register', compact('errors'));
+        }
+
         $user = $user->create($_POST);
         return view('users/successRegister', compact('user'));
     }
