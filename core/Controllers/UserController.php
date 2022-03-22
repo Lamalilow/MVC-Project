@@ -75,7 +75,7 @@ class UserController extends BaseController
        $fUser = $user->get();
 
        if(count($fUser) == 0){
-           $errors['error_auth'][]='';
+           $errors['error_auth'][]='tr';
            return view('users/login', compact('errors'));
        }
         $_SESSION['id'] = $fUser[0]['id'];
