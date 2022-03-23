@@ -7,6 +7,7 @@ abstract class Model extends \mysqli
     protected $primaryKey = 'id';
     private $inquiry = '';
     private $where_query = '';
+    private $join_query = '';
 
     public function __construct()
     {
@@ -89,11 +90,6 @@ abstract class Model extends \mysqli
         return $this->find($id);
     }
 
-    # Where
-    # [
-    #    ['name', '=', 'value'],
-    #    ['name', '=', 'value']
-    # ]
     /**
      * Задаются параметры Where
      * @param $arg - Вид должен быть таким: [ [column,'=', value] ]
@@ -134,7 +130,7 @@ abstract class Model extends \mysqli
         $value = $this->real_escape_string(trim($value));
         $query = "SELECT COUNT(*) as `count` FROM `{$this->table}` WHERE `{$column}` = '{$value}'";
         $result = $this->query($query)->fetch_assoc();
-        return $result ['count'] > 0;
+        return $result['count'] > 0;
     }
 
     public function __destruct()
@@ -142,5 +138,4 @@ abstract class Model extends \mysqli
         # закрываем
         $this->close();
     }
-
 }
