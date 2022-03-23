@@ -32,6 +32,9 @@
                 </li>
                 <?php if(has_session('id')): ?>
                     <li class="nav-item">
+                        <a class="nav-link" href="/posts/create">Создание поста</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/account">Мой аккаунт</a>
                     </li>
                 <?php else: ?>

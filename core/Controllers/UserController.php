@@ -79,7 +79,8 @@ class UserController extends BaseController
            return view('users/login', compact('errors'));
        }
         $_SESSION['id'] = $fUser[0]['id'];
-       return header('Location: /');
+
+       return redirect('/');
     }
 
 }
